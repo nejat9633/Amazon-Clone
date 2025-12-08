@@ -1,0 +1,149 @@
+.header__container{
+    background-color: #1a1a1a;
+    display: flex;
+    gap: 1.5vh;
+    height: 11vh;
+    align-items: center;
+    color: white;
+}
+.logo__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 250px; */
+    max-width: 40vh;
+}
+.logo__container img {
+    width: 80%;
+    padding-top: 5px;
+    margin-left: 0.7rem;
+    vertical-align: middle;
+}
+.delivery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    font-weight: bold;
+    padding: 1vh;
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1;
+}
+.search select, 
+.search input {
+padding: 1vh;
+outline: 0.1vh solid white;
+}
+.search select{
+border: none;
+}
+.search input{
+    border: 1px solid white;
+    width: 100%;
+    /* margin-right: -2vh; */
+}
+.search svg{
+    padding: 3px;
+    background: #febd69;
+    color: #1a1a1a;
+}
+.search svg:hover {
+    background-color: #d49644;
+}
+.search:focus-within{
+    border: 2px solid rgb(235,161,173);
+}
+.order__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    padding-right: 5vh;
+}
+.order__container a{
+    color: white;
+}
+.order__container p,
+.delivery p{
+    font-size: 0.6rem;
+}
+.account span, 
+.orders span, 
+.delivery span{
+    font-size: 0.8rem ;
+}
+
+.language{
+ max-width: 11vh;
+display: flex;
+padding: 0 0.5vh;
+}
+.language select{
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+}
+.language img{
+    width: 33%;
+    vertical-align: middle;
+}
+.language select {
+    font-size:0.7rem;
+}
+.cart{
+    position: relative; 
+    
+}
+ .cart span{
+    position:absolute ;
+    /* font-weight: bold; */
+    top: -1.5vh;
+    left: 1.8vh;
+    background-color: #1a1a1a;
+    color: orange;
+}
+.logo__container a:hover,
+.delivery:hover, .order__container a:hover, .lowerHeader__container li:hover
+{
+    border: 1px solid white;
+    border-radius: 3px;
+}
+.lowerHeader__container{
+    background: #232f3e;
+    color: white;
+    font-size: small;
+}
+.lowerHeader__container ul{
+    display: flex;
+    gap: 0.3rem;
+}
+.lowerHeader__container ul li{
+    padding: 0.4rem;
+    margin: 0.1rem 0;
+}
+.lowerHeader__container ul li:first-child{
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+@media (max-width:576px){
+    .header__container{
+        display: flex;
+        flex-direction: column ;
+        height: auto;
+    }
+    .lowerHeader__container ul li:not(:first-child) {
+        display: none;
+        
+    }
+    .language{
+        display: none;
+    }
+}
