@@ -6,7 +6,7 @@ function Category() {
   
   return (
     <div className={style.category__container}>
-      {CategoryData.map((dataList, index) => {
+      {CategoryData?.map((dataList, index) => {
        return <CategoryList data={dataList} key={index} />;
       })}
     </div>

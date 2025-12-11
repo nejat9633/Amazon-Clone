@@ -12,3 +12,7 @@ text-decoration: none;
 li {
   list-style: none;
 }
+:root{
+  --primary-color:#febd69;
+  --primary-shade: #d49644;
+}
