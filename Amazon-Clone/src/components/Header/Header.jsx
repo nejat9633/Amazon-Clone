@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import style from "./Header.module.css";
 import { FaSearch } from "react-icons/fa";
 import flag from "../../assets/download.png";
@@ -7,13 +7,23 @@ import { LuShoppingCart } from "react-icons/lu";
 import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
+import {auth} from '../../Utils/firebase'
 
 function Header() {
 
-  const [{cart},initialState] = useContext(DataContext)
+  const [{user, cart},initialState] = useContext(DataContext)
+  
   const totalItem = cart?.reduce((amount,item)=>{
     return item.amount + amount
   },0)
+
+const handleSignOut = () => {
+  const confirmed = window.confirm("Are you sure you want to sign out?");
+  if (confirmed) {
+    auth.signOut();
+  }
+};
+
 
   return (
     <div className={style.fixed}>
@@ -44,7 +54,7 @@ function Header() {
             <option value="">All</option>
           </select>
           <input type="text" placeholder="Search Product" />
-          <FaSearch size={27} />
+          <FaSearch size={29} />
         </div>
 
         <div className={style.order__container}>
@@ -58,10 +68,19 @@ function Header() {
           </a>
 
           {/* sign in and account */}
-          <Link to="/signup" className={style.account}>
+          <Link to={!user && "/signup"} className={style.account}>
             <div>
-              <p>Sign In</p>
-              <span>Account & Lists</span>
+              {user ? (
+                <>
+                  <p>Hello, {user?.email.split("@")[0]} </p>
+                  <span onClick={handleSignOut}>Sign out</span>
+                </>
+              ) : (
+                <>
+                  <p>Sign In</p>
+                  <span>Account & Lists</span>
+                </>
+              )}
             </div>
           </Link>
           {/* returns and order */}

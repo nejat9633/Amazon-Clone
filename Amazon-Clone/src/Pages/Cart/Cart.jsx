@@ -51,7 +51,7 @@ function Cart() {
                   </div>
                 
 
-                  <div className={style.btn__container}>
+                  <div className={style.btn__container} >
                     <button onClick={() => increment(item)}>
                       <IoIosArrowUp size={20}/> 
                     </button>

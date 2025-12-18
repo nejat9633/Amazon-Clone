@@ -1,0 +1,19 @@
+.payment_header {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid;
+  background-color: #E8EAE9;
+  text-align: center;
+}
+.flex {
+  display: flex;
+  gap: 10rem;
+  margin: 2rem;
+}
+
+.flex section {
+  width: 120px !important;
+}
+.cardWrap{
+    margin-top: -4%;
+}

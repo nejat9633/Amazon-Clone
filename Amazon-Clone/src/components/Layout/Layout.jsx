@@ -16,16 +16,14 @@ function Layout() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Landing />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/productdetail" element={<ProductDetail />} />
           <Route path="/category/:categoryName" element={<Result />} />
           <Route path="/products/:id" element={<ProductDetail />} />
-
-          
         </Route>
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
