@@ -2,7 +2,7 @@ import { Type } from "./action.type";
 
 export const initialState = {
   cart: [],
-  user: null
+  user: null,
 };
 
 export const reducer = (state, action) => {
@@ -49,12 +49,18 @@ export const reducer = (state, action) => {
       };
     case Type.EMPTY_CART:
       return {
-        ...state, cart: []
+        ...state,
+        cart: [],
       };
     case Type.SET_USER:
       return {
         ...state,
         user: action.user,
+      };
+    case Type.SET_AUTH_LOADING:
+      return {
+        ...state,
+        authLoading: action.authLoading,
       };
 
     default:

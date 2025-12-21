@@ -1,31 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// function NotFound() {
-//   return (
-//     <div className="text-center my-5">
-//       <br />
-//       <br />
-//       <br />
-//       <h1>404 Page not found!</h1>
-//       <br />
-//       <Link to="/" className="btn btn-primary mt-4 ">
-//         Back to Home
-//       </Link>
-
-//       <button
-//         className={styles.secondaryBtn}
-//         onClick={() => window.history.back()}
-//       >
-//         Go Back
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default NotFound;
-
-
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
 

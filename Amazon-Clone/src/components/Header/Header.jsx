@@ -10,23 +10,19 @@ import { DataContext } from "../DataProvider/DataProvider";
 import {auth} from '../../Utils/firebase'
 
 function Header() {
+  const [{ user, cart, authLoading }, dispatch] = useContext(DataContext);
+  if (authLoading) return null; 
 
+  const totalItem = cart?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
 
- const [{user, cart},initialState] = useContext(DataContext)
-
-
-  
-  const totalItem = cart?.reduce((amount,item)=>{
-    return item.amount + amount
-  },0)
-
-const handleSignOut = () => {
-  const confirmed = window.confirm("Are you sure you want to sign out?");
-  if (confirmed) {
-    auth.signOut();
-  }
-};
-
+  const handleSignOut = () => {
+    const confirmed = window.confirm("Are you sure you want to sign out?");
+    if (confirmed) {
+      auth.signOut();
+    }
+  };
 
   return (
     <div className={style.fixed}>
@@ -71,7 +67,7 @@ const handleSignOut = () => {
           </a>
 
           {/* sign in and account */}
-          <Link to={!user && "/signup"} className={style.account}>
+          <Link to={user? "#" : "/signup"} className={style.account}>
             <div>
               {user ? (
                 <>
