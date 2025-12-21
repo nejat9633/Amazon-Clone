@@ -1,0 +1,18 @@
+.container {
+  background-color: #efeeee;
+  padding: 1.5rem;
+}
+.orders__container {
+  background-color: #fff;
+  padding: 1.2rem;
+}
+.orders__container h2 {
+  padding: 1.5rem;
+  border-bottom: 2px solid var(--primary-shade);
+}
+.orders__container section {
+  width: 120px !important;
+}
+.orders__list p {
+  padding: 1rem 1rem 0 1rem;
+}

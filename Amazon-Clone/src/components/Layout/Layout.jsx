@@ -11,6 +11,9 @@ import SharedLayout from "./SharedLayout";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import NotFound from "../NotFound";
+
+
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 function Layout() {
@@ -18,18 +21,27 @@ function Layout() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}> 
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<Landing />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/orders" element={
-             <ProtectedRoute msg={'You must login to access your orders.'} redirect={'/orders'}>
-               <Orders />
-             </ProtectedRoute>
-            } />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute
+                msg={"You must login to access your orders."}
+                redirect={"/orders"}
+              >
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/payment"
             element={
-              <ProtectedRoute msg={'You must login to pay.'} redirect={'/payment'}>
+              <ProtectedRoute
+                msg={"You must login to pay."}
+                redirect={"/payment"}
+              >
                 <Elements stripe={stripePromise}>
                   <Payment />
                 </Elements>
@@ -41,6 +53,7 @@ function Layout() {
           <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
