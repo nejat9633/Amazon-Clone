@@ -13,11 +13,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import NotFound from "../NotFound/NotFound";
 
-
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 function Layout() {
-  //  console.log(stripePromise);
   return (
     <>
       <Routes>

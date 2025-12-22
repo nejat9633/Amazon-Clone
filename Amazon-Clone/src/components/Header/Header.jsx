@@ -8,7 +8,7 @@ import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import {auth} from '../../Utils/firebase'
-import { ClipLoader } from "react-spinners";
+import  SignOutButton  from "../SignOutButton/SignOutButton";
 
 function Header() {
   const [{ user, cart }, initialState] = useContext(DataContext);
@@ -17,22 +17,6 @@ function Header() {
   const totalItem = cart?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
-
-  const handleSignOut = () => {
-    const confirmed = window.confirm("Are you sure you want to sign out?");
-    if (confirmed) {
-      auth.signOut();
-    }
-  };
-  // {
-  //   showConfirm && (
-  //     <ConfirmModal
-  //       title="Sign out?"
-  //       onConfirm={handleSignOut}
-  //       onCancel={() => setShowConfirm(false)}
-  //     />
-  //   );
-  // }
 
   return (
     <div className={style.fixed}>
@@ -77,21 +61,18 @@ function Header() {
           </a>
 
           {/* sign in and account */}
-          <Link to={!user && "/signup"} className={style.account}>
-            <div>
-              {user ? (
-                <>
-                  <p>Hello, {user?.email.split("@")[0]} </p>
-                  <span onClick={handleSignOut}>Sign out</span>
-                </>
-              ) : (
-                <>
-                  <p>Sign In</p>
-                  <span>Account & Lists</span>
-                </>
-              )}
+
+          {user ? (
+            <div className={style.account}>
+              <p>Hello, {user.email.split("@")[0]}</p>
+              <SignOutButton />
             </div>
-          </Link>
+          ) : (
+            <Link to="/signup" className={style.account}>
+              <p>Sign In</p>
+              <span>Account & Lists</span>
+            </Link>
+          )}
           {/* returns and order */}
           <Link to="/orders" className={style.orders}>
             <div>
